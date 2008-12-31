@@ -1,0 +1,33 @@
+<% if @ip_historians.blank? %>
+<p>No History</p>
+<% else %>
+<p>All History</p>
+<table width="80%">
+	<tr>
+		<th>IP Address</th>
+		<th>Hostname</th>
+		<th>A</th>
+		<th>PTR</th>
+		<th>Description</th>
+		<th>Reserved</th>
+		<th>Alive</th>
+		<th>Created_at</th>
+		<th>Updated_at</th>
+	</tr>
+	<% @ip_historians.each do |c| %>
+		<tr>
+			<td align="center"><%= link_to c.ip_address, {:action => 'show', :id => c.id} -%></td>
+			<td align="center"><%= c.hostname -%></td>
+			<td align="center"><%= c.a_rec -%></td>
+			<td align="center"><%= c.ptr_rec -%></td>
+			<td align="center"><%= c.description -%></td>
+			<td align="center"><%= c.reserved? ? '<font color=red>reserved</font>' : '' -%></td>
+			<td align="center"><%= c.pingable? ? image_tag("circle-green.png", :alt => 'Alive') : image_tag("circle-red.png", :alt => 'Dead') -%></td>
+			<td align="center"><%= c.created_at -%></td>
+			<td align="center"><%= c.updated_at -%></td>
+		</tr>
+	<% end %>
+</table>
+<% end %>
+<br />
+<%= link_to 'Back', {:controller => 'ip', :action => 'list'} %>

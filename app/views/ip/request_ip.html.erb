@@ -1,0 +1,14 @@
+<h2>Request an IP</h2>
+
+<font color=red>
+<%= error_messages_for :request_ip, :header_message => "Please Try Again!", :message => "We had some problems with this request:" %>
+</font>
+
+<h3>Choose a subnet...</h3>
+<% @a.each do |c| %>
+	<%= link_to c,{:action => 'new', :subnet => c} %>
+	<br/>
+<% end %>
+
+<br/>
+<%= link_to 'Back', {:action => 'list'} %>

@@ -1,0 +1,60 @@
+<% if @ips.blank? %>
+<p>There are not any IPs currently in the system.</p>
+<% else %>
+<p align=center>These are the current IPs in our system</p>
+<table width="80%" align=center id="outsideTable">
+  <tr>
+  	<td align=left>
+  	  <%= link_to "Add new IP", {:action => 'new' }%>&nbsp;<%= link_to "Request an IP", {:action => 'request_ip' }%>
+  	</td>
+  	<td align=right> 
+  	  <%= will_paginate @ips %>
+  	</td>
+  </tr>
+  <tr>
+  	<td colspan=2>
+  	<table width=100% id="insideTable">
+			<tr>
+				<th>IP Address</th>
+				<th>Hostname</th>
+				<th>A</th>
+				<th>PTR</th>
+				<th>Description</th>
+				<th>Reserved</th>
+				<th>Alive</th>
+				<th>Allocated</th>
+				<th>Action</th>
+			</tr>
+			<% @ips.each do |c| %>
+			<tr>
+				<td align="center"><%= link_to c.ip_address, {:action => 'show', :id => c.id} -%></td>
+				<td align="center"><%= c.hostname -%></td>
+				<td align="center"><%= c.a_rec -%></td>
+				<td align="center"><%= c.ptr_rec -%></td>
+				<td align="center"><%= c.description -%></td>
+				<td align="center"><%= c.reserved? ? '<font color=red>reserved</font>' : '' -%></td>
+				<td align="center"><%= c.pingable? ? image_tag("circle-green.png", :alt => 'Alive') : image_tag("circle-red.png", :alt => 'Dead') -%></td>
+				<td align="center"><%= c.allocated ? image_tag("check.gif", :alt => 'Allocated') : '' -%></td>
+				<td align="center">
+					<%= link_to "Resolve", {:controller => 'resolve', :action => 'resolve', :id => c.id}, :popup => ['new_window']%>
+					&nbsp;
+					<%= link_to "Delete", {:action => 'delete', :id => c.id}, :confirm => "Are you sure you want to delete this item?" %>
+					&nbsp;
+					<%= link_to "History", {:controller => 'ip_historian', :action => 'show', :id => c.id} %>
+				</td>
+			</tr>
+			<% end %>
+			</table>
+		  </td>
+		 </tr>
+		 <tr>
+  	<td align=left>
+  	  <%= link_to "Add new IP", {:action => 'new' }%>&nbsp;<%= link_to "Request an IP", {:action => 'request_ip' }%>
+  	</td>
+  	<td align=right> 
+  	  <%= will_paginate @ips %>
+  	</td>
+  </tr>
+</table>
+<% end %>
+

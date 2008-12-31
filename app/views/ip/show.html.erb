@@ -1,0 +1,50 @@
+<table>
+	<tr>
+		<th>IP Address</th>
+		<td><%= @ip.ip_address %></td>
+	</tr>
+	<tr>
+		<th>Hostname</th>
+		<td><%= @ip.hostname %></td>
+	</tr>
+	<tr>
+		<th>A Record</th>
+		<td><%= @ip.a_rec %></td>
+	</tr>
+	<tr>
+		<th>PTR Record</th>
+		<td><%= @ip.ptr_rec %></td>
+	</tr>
+	<tr>
+		<th>Description</th>
+		<td><%= @ip.description %></td>
+	</tr>
+	<tr>
+		<th>Notes</th>
+		<td><pre><%= @ip.notes %></pre></td>
+	</tr>
+	<tr>
+		<th>Active</th>
+		<td><%= @ip.ip_address %></td>
+	</tr>
+	<tr>
+		<th>Reserved</th>
+		<td><%= @ip.reserved %></td>
+	</tr>
+	<tr>
+		<th>Allocated</th>
+		<td><%= @ip.allocated %></td>
+	</tr>
+	<tr>
+		<th>Created</th>
+		<td><%= @ip.created_at %></td>
+	</tr>
+	<tr>
+		<th>Modified</th>
+		<td><%= @ip.updated_at %></td>
+	</tr>
+</table>
+<br/>
+<%= link_to 'Historian View', {:action => 'historian_view'} %>
+<br/><br/>
+<%= link_to 'Back', {:action => 'list'} %>
