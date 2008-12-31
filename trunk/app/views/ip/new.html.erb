@@ -1,0 +1,26 @@
+<h1>Add new IP</h1>
+
+<font color=red>
+<%= error_messages_for :ip_from_form, :header_message => "Please Try Again!", :message => "We had some problems saving this record:" %>
+</font>
+
+<% form_tag :action => 'ip_receipt'  do %>
+
+<p><label for="ip_address">Choose a Subnet</label><br/>
+<%= select("ip_from_form", "subnet", @a) %></p>
+
+<p><label for="hostname">Hostname</label><br/>
+<%= text_field 'ip_from_form', 'hostname' %></p>
+
+<p><label for="description">Description</label><br/>
+<%= text_field 'ip_from_form', 'description' %></p>
+
+<p><label for="notes">Notes</label><br/>
+<%= text_area 'ip_from_form', 'notes' %></p>
+
+<p><label for="reserved">Reserved</label><br/>
+<%= check_box 'ip_from_form', 'reserved' %></p>
+
+<%= submit_tag "Create" %>
+<% end  %>
+<%= link_to 'Back', {:action => 'list'} %>

@@ -1,0 +1,44 @@
+<p>Passed IP: <%= @ip.ip_address -%></p>
+
+<% require 'ping' %>
+<% require 'resolv' %> 
+<% dns = Resolv::DNS.new %>
+
+<% form_tag :action => 'update'  do %>
+
+<p>
+Hostname: <% 
+begin
+  @ip.ptr_rec = dns.getname(@ip.ip_address).to_s 
+  #Strip the domain off the hostname
+  @ip.ptr_rec = @ip.ptr_rec.sub(/\..*/, "")
+rescue StandardError
+  @ip.ptr_rec = nil
+end
+
+%> 
+<%= @ip.ptr_rec -%>
+<br> 
+</p>
+
+<p>
+IP: <%
+begin
+  @ip.a_rec = dns.getaddress(@ip.hostname).to_s 
+rescue StandardError
+  @ip.a_rec = nil
+end
+%> 
+<%=  @ip.a_rec -%>
+<br> 
+</p>
+
+<p>
+Ping: <%= @ip.pingable = Ping.pingecho(@ip.ip_address, 2) -%>
+</p>
+
+
+<%= submit_tag "Create" %>
+<% end  %>
+
+

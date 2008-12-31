@@ -1,0 +1,19 @@
+<% if @success %>
+<font color=green>
+<h3>
+HOSTNAME:   <%= @ip.hostname -%><br/>
+IP ADDRESS: <%= @ip.ip_address -%>
+</h3>
+</font>
+<br/>
+<%= link_to 'List', {:action => 'list'} %>
+<% else %>
+<font color=red>
+<h3>
+Something went WRONG.<br/>
+Better error handling is needed here.
+</h3>
+</font>
+<br/>
+<%= link_to 'List', {:action => 'list'} %>
+<% end %> 
