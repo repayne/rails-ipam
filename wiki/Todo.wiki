@@ -1,0 +1,15 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Features we would like to add to Rails-IPAM
+
+
+= Details =
+
+ * Tie in port information from cisco routers and switches
+ * Integration with cacti for bandwidth graphs
+ * User authentication
+ * AJAX search, and pagination
+ * Table sorting
+ * Reports
