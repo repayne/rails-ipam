@@ -7,9 +7,8 @@ Features we would like to add to Rails-IPAM
  * Integration with cacti for bandwidth graphs
  * User authentication
  * Fix the resolve function, background worker -- use backgroundDRb
- * Reports
- * Cleanup the edit page
- * Make a show page
+ * Cleanup the edit page, remove show elements
+ * Make a show page, link to from ip address
  * Make a menu side bar, table based.  list, add ip, resolve all, history all, setup
  * n_to_a a_to_n, view helper
  * New IP -- IP range
