@@ -6,7 +6,7 @@ Features we would like to add to Rails-IPAM
  * Tie in port information from cisco routers and switches
  * Integration with cacti for bandwidth graphs
  * User authentication
- * Fix the resolve function, background worker
+ * Fix the resolve function, background worker -- use backgroundDRb
  * Reports
  * Cleanup the edit page
  * Make a show page
